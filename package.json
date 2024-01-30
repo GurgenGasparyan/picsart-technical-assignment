@@ -4,9 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack serve --config ./config/webpack.client.js",
-    "build": "webpack --config ./config/webpack.client.js --mode=production",
-    "analyze": "webpack --config ./config/webpack.client.js --mode=production --profile --json > stats.json --analyze",
+    "dev": "webpack serve --config ./config/webpack.development.js",
+    "build": "webpack --config ./config/webpack.production.js",
+    "analyze": "webpack --config ./config/webpack.production.js --profile --json > stats.json --analyze",
     "types:check": "tsc --noEmit",
     "test": "jest --coverage"
   },
@@ -39,6 +39,7 @@
     "webpack-bundle-analyzer": "^4.10.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^4.15.1",
+    "webpack-merge": "^5.10.0",
     "webpack-node-externals": "^3.0.0"
   },
   "dependencies": {
