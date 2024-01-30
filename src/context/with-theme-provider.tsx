@@ -4,8 +4,11 @@ import { darkTheme, lightTheme } from '../theme';
 
 import { useTheme } from '../hooks';
 
-export const withThemeProvider = (Component: React.ComponentType) => {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+interface ComponentProps {
+  children: React.ReactElement;
+}
+
+export const withThemeProvider = (Component: React.ComponentType<ComponentProps>) => {
   return (props: any) => {
     const { theme } = useTheme();
 

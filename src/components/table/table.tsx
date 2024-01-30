@@ -4,7 +4,6 @@ import { FaLongArrowAltUp } from 'react-icons/fa';
 
 import {
   TableStyled,
-  ButtonStyled,
   HeaderStyled,
   SearchStyled,
   TableRowStyled,
@@ -12,6 +11,8 @@ import {
   PaginationWrapper,
   TableBodyRowStyled,
   TableHeaderColumnStyled,
+  PaginationButtonStyled,
+  PageCount,
 } from './styles';
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from 'react-icons/md';
 
@@ -79,7 +80,7 @@ export const Table = <T,>({
   return (
     <>
       <HeaderStyled>
-        <SearchStyled placeholder="Search..." onChange={handleSearch} />
+        <SearchStyled data-testid="table-search" placeholder="Search..." onChange={handleSearch} />
       </HeaderStyled>
       <TableStyled>
         <TableHeaderStyled>
@@ -87,6 +88,7 @@ export const Table = <T,>({
             {columns.map((column, index) => (
               <TableHeaderColumnStyled
                 key={index}
+                sortable={column.sortable}
                 onClick={column.sortable ? onSortingChange(column) : undefined}
               >
                 <div>
@@ -101,7 +103,7 @@ export const Table = <T,>({
         </TableHeaderStyled>
         <tbody>
           {currentData.slice(startIndex, endIndex).map((row, index) => (
-            <TableRowStyled key={index}>
+            <TableRowStyled key={index} data-testid="tbody-row">
               {columns.map((column, index) => (
                 <TableBodyRowStyled key={index}>{row[column.key]}</TableBodyRowStyled>
               ))}
@@ -111,18 +113,21 @@ export const Table = <T,>({
         </tbody>
       </TableStyled>
       <PaginationWrapper>
-        <ButtonStyled onClick={() => setCurrentPage(currentPage - 1)} disabled={currentPage === 0}>
+        <PaginationButtonStyled
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 0}
+        >
           <MdKeyboardArrowLeft />
-        </ButtonStyled>
-        <strong>
+        </PaginationButtonStyled>
+        <PageCount>
           {currentPage + 1} / {Math.ceil(currentData.length / itemsPerPage)}
-        </strong>{' '}
-        <ButtonStyled
+        </PageCount>
+        <PaginationButtonStyled
           onClick={() => setCurrentPage(currentPage + 1)}
           disabled={currentPage + 1 === Math.floor(currentData.length / itemsPerPage)}
         >
           <MdKeyboardArrowRight />
-        </ButtonStyled>{' '}
+        </PaginationButtonStyled>
       </PaginationWrapper>
     </>
   );

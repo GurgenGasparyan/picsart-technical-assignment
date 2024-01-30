@@ -6,13 +6,13 @@ export const CardStyled = styled.div`
   padding: 12px;
   margin-inline: auto;
   border-radius: 16px;
+  border: ${(props) => `1px solid ${props.theme.border}`};
   overflow: hidden;
   box-shadow: none;
-  background: ${(props) => props.theme.background};
   transform-origin: center center;
   transition: all 0.4s ease-in-out;
   text-decoration: none;
-  color: black;
+  color: ${(props) => props.theme.text};
 `;
 
 export const CartHeaderStyled = styled.div`

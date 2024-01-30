@@ -39,8 +39,9 @@ export const PostActionButtonStyled = styled.button`
   margin-right: 8px;
   border-radius: 50%;
   background-color: transparent;
+  color: ${(props) => props.theme.text};
   &:hover {
-    background-color: white;
+    background-color: ${(props) => props.theme.link};
   }
   &:last-child {
     margin-right: 0;

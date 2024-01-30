@@ -48,15 +48,15 @@ export const UserDetailGoBackStyled = styled.span`
   position: absolute;
   border-radius: 4px;
   display: inline-block;
-  background-color: #0e3b5c;
+  background-color: ${(props) => props.theme.activeLinkBackground};
   &:hover {
-    background-color: #e3f2fd;
+    background-color: ${(props) => props.theme.background};
     > a {
-      color: black;
+      color: ${(props) => props.theme.link};
     }
   }
   > a {
-    color: white;
+    color: ${(props) => props.theme.link};
     text-decoration: none;
   }
 `;

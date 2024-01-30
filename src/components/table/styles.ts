@@ -1,11 +1,15 @@
 import styled from 'styled-components';
 
+interface TableHeaderColumnStyledProps {
+  sortable?: boolean;
+}
+
 export const TableStyled = styled.table`
   width: 100%;
   overflow: hidden;
   border-spacing: 0;
   border-radius: 8px;
-  border: 1px solid #e3e9ef;
+  border: ${(props) => `1px solid ${props.theme.border}`};
 `;
 
 export const HeaderStyled = styled.div`
@@ -23,12 +27,15 @@ export const TableRowStyled = styled.tr`
   }
 `;
 
-export const TableHeaderColumnStyled = styled.th`
+export const TableHeaderColumnStyled = styled.th<TableHeaderColumnStyledProps>`
   padding: 16px;
-  color: ${(props) => props.theme.textOnContainer};
+  color: ${(props) => props.theme.text};
   text-align: left;
   position: relative;
-  background-color: ${(props) => props.theme.container};
+  background-color: ${(props) => props.theme.background};
+  border-bottom: ${(props) => `1px solid ${props.theme.border}`};
+  cursor: ${({ sortable }) => (sortable ? 'pointer' : 'default')};
+
   > div {
     display: flex;
     align-items: center;
@@ -37,17 +44,18 @@ export const TableHeaderColumnStyled = styled.th`
 
 export const TableBodyRowStyled = styled.td`
   padding: 16px;
-  color: ${(props) => props.theme.textOnContainer};
-  border-bottom: 1px solid #e3e9ef;
+  color: ${(props) => props.theme.text};
+  border-bottom: ${(props) => `1px solid ${props.theme.border}`};
 `;
 
 export const SearchStyled = styled.input`
   width: 320px;
   padding: 6px 12px;
   align-items: center;
-  border: 1px solid #a1a9b8;
+  border: ${(props) => `1px solid ${props.theme.border}`};
+  color: ${(props) => props.theme.text};
   border-radius: 6px;
-  background: white;
+  background: ${(props) => props.theme.background};
 `;
 
 export const PaginationWrapper = styled.div`
@@ -57,11 +65,15 @@ export const PaginationWrapper = styled.div`
   justify-content: center;
 `;
 
-export const ButtonStyled = styled.button`
+export const PaginationButtonStyled = styled.button`
   margin: 0 10px;
   font-size: 20px;
   padding: 2px 10px;
   border-radius: 4px;
   background-color: white;
   border: 1px solid silver;
+`;
+
+export const PageCount = styled.strong`
+  color: ${(props) => props.theme.text};
 `;

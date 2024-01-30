@@ -4,7 +4,8 @@ export const HeaderStyled = styled.header`
   width: 100%;
   height: 70px;
   display: flex;
-  background-color: ${(props) => props.theme.primary};
+  background-color: ${(props) => props.theme.background};
+  border-bottom: ${(props) => `1px solid ${props.theme.border}`};
   align-items: center;
   justify-content: space-between;
   padding: 10px;
@@ -20,6 +21,7 @@ export const ThemeToggleStyled = styled.button`
   background: none;
   border: none;
   cursor: pointer;
+  color: ${(props) => props.theme.text};
 `;
 
 export const NavigationStyled = styled.div`
@@ -27,7 +29,7 @@ export const NavigationStyled = styled.div`
     text-decoration: none;
     padding: 5px 10px;
     border-radius: 4px;
-    color: white;
+    color: ${(props) => props.theme.link};
     margin-right: 8px;
     &:hover {
       background-color: white;
@@ -37,8 +39,8 @@ export const NavigationStyled = styled.div`
       margin-right: 0;
     }
     &.active {
-      background-color: white;
-      color: black;
+      background-color: ${(props) => props.theme.activeLinkBackground};
+      color: ${(props) => props.theme.activeLink};
     }
   }
 `;

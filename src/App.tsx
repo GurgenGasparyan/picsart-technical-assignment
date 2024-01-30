@@ -1,19 +1,9 @@
 import React from 'react';
 import { Routes, Route, BrowserRouter } from 'react-router-dom';
-import { createGlobalStyle } from 'styled-components';
 
 import { Header, Loader } from './components';
 import { withThemeProvider } from './context';
-import { WrapperStyled } from './styles';
-
-const GlobalStyles = createGlobalStyle`
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Roboto;
-  }
-`;
+import { GlobalStyles, WrapperStyled } from './styles';
 
 const PostsPage = React.lazy(() => import('./pages/home/posts'));
 const UserDetailsPage = React.lazy(() => import('./pages/user-details/user-details'));

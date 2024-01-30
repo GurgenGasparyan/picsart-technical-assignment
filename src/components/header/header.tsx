@@ -26,7 +26,7 @@ export const Header = () => {
           Users
         </Link>
       </NavigationStyled>
-      <ThemeToggleStyled onClick={toggleTheme}>
+      <ThemeToggleStyled onClick={toggleTheme} data-testid="theme-switcher">
         {theme === 'light' ? <FaMoon size={24} /> : <FaSun size={24} />}
       </ThemeToggleStyled>
     </HeaderStyled>

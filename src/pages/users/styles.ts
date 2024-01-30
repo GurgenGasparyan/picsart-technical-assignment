@@ -6,10 +6,10 @@ export const ViewUserDetailsStyled = styled.span`
   display: inline-block;
   background-color: transparent;
   &:hover {
-    background-color: white;
+    background-color: ${(props) => props.theme.border};
   }
   > a {
-    color: black;
+    color: ${(props) => props.theme.text};
     padding: 10px;
     display: inline-block;
     text-decoration: none;

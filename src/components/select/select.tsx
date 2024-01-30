@@ -9,7 +9,7 @@ interface SelectProps {
 
 export const Select: FC<SelectProps> = ({ children, value, onChange }) => {
   return (
-    <SelectStyled value={value} onChange={onChange}>
+    <SelectStyled value={value} onChange={onChange} data-testid="select">
       {children}
     </SelectStyled>
   );
